@@ -1,0 +1,205 @@
+/* 小红书笔记下载器 - 注入页面的 UI 样式 */
+#xhs-dl-root {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+#xhs-dl-root * {
+  box-sizing: border-box;
+}
+
+/* 触发按钮(右下角浮动,用于博主主页及笔记页兜底) */
+.xhs-dl-btn {
+  border: none;
+  cursor: pointer;
+  background: #ff2442;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(255, 36, 66, 0.4);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.xhs-dl-btn:hover {
+  transform: translateY(-1px);
+}
+.xhs-dl-btn[disabled] {
+  opacity: 0.55;
+  cursor: default;
+  transform: none;
+}
+.xhs-dl-btn[hidden] {
+  display: none;
+}
+
+/* 内联按钮(笔记页「关注」按钮旁边),风格对齐小红书红色描边胶囊 */
+.xhs-dl-inline-btn {
+  margin-left: 12px;
+  height: 40px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 46, 77, 0.9);
+  border-radius: 100px;
+  background: rgba(255, 46, 77, 0.04);
+  color: #ff2e4d;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.xhs-dl-inline-btn:hover {
+  background: rgba(255, 46, 77, 0.12);
+}
+.xhs-dl-inline-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.xhs-dl-inline-btn[hidden] {
+  display: none;
+}
+
+/* 进度面板 */
+.xhs-dl-panel {
+  width: 320px;
+  background: rgba(24, 24, 28, 0.95);
+  color: #f3f3f5;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+.xhs-dl-panel[hidden] {
+  display: none;
+}
+.xhs-dl-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.xhs-dl-panel-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+.xhs-dl-close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+.xhs-dl-close:hover {
+  color: #fff;
+}
+.xhs-dl-status {
+  font-size: 12px;
+  color: #ddd;
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+.xhs-dl-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.xhs-dl-progress[hidden] {
+  display: none;
+}
+.xhs-dl-progress-inner {
+  height: 100%;
+  width: 0;
+  background: #ff2442;
+  transition: width 0.3s ease;
+}
+.xhs-dl-log {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #bbb;
+  max-height: 130px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+.xhs-dl-log:empty {
+  display: none;
+}
+.xhs-dl-log .warn {
+  color: #f6c151;
+}
+.xhs-dl-log .err {
+  color: #ff7b72;
+}
+.xhs-dl-log .ok {
+  color: #7ee787;
+}
+/* 保存路径显示 */
+.xhs-dl-path {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #9dd39a;
+  word-break: break-all;
+  user-select: text;
+  margin-bottom: 8px;
+}
+.xhs-dl-path[hidden] {
+  display: none;
+}
+
+/* 底部操作按钮行 */
+.xhs-dl-actions {
+  display: flex;
+  gap: 8px;
+}
+.xhs-dl-open {
+  flex: 1;
+  border: none;
+  cursor: pointer;
+  background: #ff2442;
+  color: #fff;
+  font-size: 12px;
+  padding: 7px 0;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.xhs-dl-open:hover {
+  background: #e01e39;
+}
+.xhs-dl-open[hidden] {
+  display: none;
+}
+.xhs-dl-cancel {
+  flex: 1;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  color: #eee;
+  font-size: 12px;
+  padding: 7px 0;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.xhs-dl-cancel:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+.xhs-dl-cancel[disabled] {
+  opacity: 0.55;
+  cursor: default;
+}
+.xhs-dl-cancel[hidden] {
+  display: none;
+}
